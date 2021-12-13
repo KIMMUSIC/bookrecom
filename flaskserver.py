@@ -50,7 +50,7 @@ class Plus(Resource):
             w2 = w2v(doc)
             
             new_result = []
-            new_model = KeyedVectors.load_word2vec_format('book_model_f.bin', binary=True)
+            new_model = KeyedVectors.load_word2vec_format('book_model_f_10_40.bin', binary=True)
             
             if w2 is None:
                 new_result = random.sample(new_model.index_to_key,5)
@@ -116,7 +116,7 @@ class User(Resource):
             parser.add_argument('userid', type=str)
             args = parser.parse_args()
 
-            new_model = KeyedVectors.load_word2vec_format('book_model_f.bin', binary=True)
+            new_model = KeyedVectors.load_word2vec_format('book_model_f_10_40.bin', binary=True)
             f = open('user_md_f.csv','r')
             rdr = csv.reader(f)
 
@@ -203,9 +203,9 @@ api.add_resource(Ctl, '/ctl')
 
 def init():
     global k,model
-    model = Word2Vec.load('word_vector_f.model')
+    model = Word2Vec.load('word_vector_f_10_40.model')
 
-    k = KeyedVectors.load_word2vec_format('book_model_f.bin', binary=True)
+    k = KeyedVectors.load_word2vec_format('book_model_f_10_40.bin', binary=True)
     
 def ok(doc):
     okt = Okt()
